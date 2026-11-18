@@ -247,9 +247,9 @@ if st.session_state.page == 'input':
     st.markdown("---")
 
     # ==================== 预测按钮 ====================
-    col_btn1, col_btn2, col_btn3 = st.columns([1, 2, 1])
+    col_btn1, col_btn2, col_btn3 = st.columns([1, 3, 1]) # 调整比例，中间列更宽
     with col_btn2:
-        if st.button("🚀 开始预测", key="predict_btn"):
+        if st.button("🚀 开始预测", key="predict_btn", use_container_width=True): # 关键修改
             # 用字典收集所有 UI 输入
             input_dict = {
                 '污泥比例（%）': sludge_ratio,
@@ -383,7 +383,7 @@ else:
                 step=0.01, format="%.2f", key="actual_energy"
             )
 
-        if st.button("🔄 计算准确率", key="update_actual"):
+        if st.button("🔄 计算准确率", key="update_actual", use_container_width=True):
             st.session_state.actual_values = {
                 out_names[0]: actual_solid if actual_solid > 0 else None,
                 out_names[1]: actual_gas if actual_gas > 0 else None,
